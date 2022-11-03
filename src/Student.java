@@ -11,6 +11,12 @@ public class Student {
         GPA = studentGPA;
     }
 
+    //constructor to be used with setters
+    public Student(){
+
+    }
+
+
     //getters
     public String getName(){
         return this.name;
@@ -35,5 +41,12 @@ public class Student {
 
     public void setGPA(double newGPA){
         this.GPA = newGPA;
+    }
+
+    @Override
+    public String toString(){ //custom version of toString method to be used int printStudents method in main
+        return  "Name: " + name + ", " +
+                "Address: " + address + ", " +
+                "GPA: " + GPA;
     }
 }
