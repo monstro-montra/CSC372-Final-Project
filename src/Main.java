@@ -251,10 +251,7 @@ public class Main {
                         case 8:
                             System.exit(0);
                         default:
-                            if (menuChoice > 8 || menuChoice < 1){
-                                throw new InvalidMenuOptionException("Invalid menu Option");
-                            }
-                            break;
+                            throw new InvalidMenuOptionException("Invalid menu Option");
                     }
 
                 } else {

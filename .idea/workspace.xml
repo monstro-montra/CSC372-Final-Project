@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2623d34c-afe7-45da-bbc9-cc36102231a8" name="Changes" comment="minor bug fix. added an extra in.nextLine() in userInputGPA method to prevent scanner overlap">
+    <list default="true" id="2623d34c-afe7-45da-bbc9-cc36102231a8" name="Changes" comment="finished exception handling for the remove method.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
@@ -82,7 +82,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667535435891</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="finished exception handling for the remove method.">
+      <created>1667538177891</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1667538177891</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -102,7 +109,8 @@
     <MESSAGE value="added a lot more validations for the add method. also added separate method to get user input for name, address, and gpa." />
     <MESSAGE value="completed addStudent method with all validations. added isStringInt boolean method to be used in userInputAddress, validateString method for userInputName()" />
     <MESSAGE value="minor bug fix. added an extra in.nextLine() in userInputGPA method to prevent scanner overlap" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor bug fix. added an extra in.nextLine() in userInputGPA method to prevent scanner overlap" />
+    <MESSAGE value="finished exception handling for the remove method." />
+    <option name="LAST_COMMIT_MESSAGE" value="finished exception handling for the remove method." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
