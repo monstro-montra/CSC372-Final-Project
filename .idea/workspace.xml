@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2623d34c-afe7-45da-bbc9-cc36102231a8" name="Changes" comment="completed addStudent method with all validations. added isStringInt boolean method to be used in userInputAddress, validateString method for userInputName()">
+    <list default="true" id="2623d34c-afe7-45da-bbc9-cc36102231a8" name="Changes" comment="minor bug fix. added an extra in.nextLine() in userInputGPA method to prevent scanner overlap">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
@@ -75,7 +75,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667535160710</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="minor bug fix. added an extra in.nextLine() in userInputGPA method to prevent scanner overlap">
+      <created>1667535435891</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1667535435891</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -94,7 +101,8 @@
     <MESSAGE value="added add student, remove student, and exception for print method" />
     <MESSAGE value="added a lot more validations for the add method. also added separate method to get user input for name, address, and gpa." />
     <MESSAGE value="completed addStudent method with all validations. added isStringInt boolean method to be used in userInputAddress, validateString method for userInputName()" />
-    <option name="LAST_COMMIT_MESSAGE" value="completed addStudent method with all validations. added isStringInt boolean method to be used in userInputAddress, validateString method for userInputName()" />
+    <MESSAGE value="minor bug fix. added an extra in.nextLine() in userInputGPA method to prevent scanner overlap" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor bug fix. added an extra in.nextLine() in userInputGPA method to prevent scanner overlap" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

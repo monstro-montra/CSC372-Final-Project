@@ -174,10 +174,38 @@ public class Main {
         return studentGPA;
     }
 
-    public void removeStudent() { //used for case 3 in menu()
-        System.out.println("Which student would you like to remove?");
-        students.remove(in.nextInt() - 1);
-        System.out.println("Student removed.");
+    public void removeStudent()  { //used for case 3 in menu()
+        if(students.size() == 0 ) {
+            try {
+                throw new InvalidAmountException("There are no students to remove!");
+            } catch (InvalidAmountException e) {
+                System.out.println(e.getMessage());
+            }
+        } else {
+            while(true){
+                try{
+                    System.out.println("Which student would you like to remove?");
+                    if (in.hasNextInt()){
+                        students.remove(in.nextInt() - 1);
+                        System.out.println("Student removed.");
+                        break;
+                    } else {
+                        throw new InputMismatchException("Not an integer.");
+                    }
+                } catch (InputMismatchException er){
+                    System.out.println(er.getMessage());
+                    System.out.println("Please try again");
+                    in.next(); //prevents infinite loop
+                } catch (IndexOutOfBoundsException e){
+                    System.out.println("Out of bounds!");
+                    System.out.println("Please try again.");
+                }
+
+            } //end while loop
+
+        }
+
+
     }
     public static void showMenu(){
         System.out.println();
@@ -223,7 +251,7 @@ public class Main {
                         case 8:
                             System.exit(0);
                         default:
-                            if (menuChoice > 8 || menuChoice < 0){
+                            if (menuChoice > 8 || menuChoice < 1){
                                 throw new InvalidMenuOptionException("Invalid menu Option");
                             }
                             break;
