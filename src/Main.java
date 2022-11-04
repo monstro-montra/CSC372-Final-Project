@@ -12,19 +12,26 @@ public class Main {
         menu(0);
     }
 
-
-    public void printStudents(){ //used for case 1 in menu()
+    public boolean isPopulated() {
         try{
             if (students.size() == 0){
-                throw new InvalidAmountException("There are no students to list! ");
+                throw new InvalidAmountException("There are no students in the list!");
+            } else {
+                return true;
             }
-            else{
-                for (int i = 0; i < students.size(); i++){
-                    System.out.println("Student Number " + (i + 1) + ": " + students.get(i));
-                }
+        } catch (InvalidAmountException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+
+    }
+
+
+    public void printStudents(){ //used for case 1 in menu()
+        if (isPopulated()) {
+            for (int i = 0; i < students.size(); i++) {
+                System.out.println("Student Number " + (i + 1) + ": " + students.get(i));
             }
-        } catch (InvalidAmountException invalidAmountException){
-            System.out.println(invalidAmountException.getMessage());
         }
     }
 
@@ -142,7 +149,6 @@ public class Main {
         }
     }
 
-
     public static double userInputGPA(){ //will be used in addStudent()
         //GPA user input
         double studentGPA; //user input will be held in this variable
@@ -151,7 +157,7 @@ public class Main {
                 System.out.print("GPA: ");
                 if (in.hasNextDouble()){
                     studentGPA = in.nextDouble();
-                    if(studentGPA > 0 && studentGPA < 4.0){
+                    if(studentGPA > 0 && studentGPA <= 4.0){
                         in.nextLine(); //use up extra \n
                         break;
                     } else {
@@ -175,14 +181,8 @@ public class Main {
     }
 
     public void removeStudent()  { //used for case 3 in menu()
-        if(students.size() == 0 ) {
-            try {
-                throw new InvalidAmountException("There are no students to remove!");
-            } catch (InvalidAmountException e) {
-                System.out.println(e.getMessage());
-            }
-        } else {
-            while(true){
+            while(isPopulated()){ //start loop while students is Populated
+                printStudents();
                 try{
                     System.out.println("Which student would you like to remove?");
                     if (in.hasNextInt()){
@@ -203,10 +203,38 @@ public class Main {
 
             } //end while loop
 
+    }
+
+    public void editStudent(){
+        int studentChoice;
+            while(isPopulated()){
+                printStudents();
+                try{
+                    System.out.println("Which student would you like to edit?");
+                    if (in.hasNextInt()){
+                        studentChoice = in.nextInt() - 1;
+                        in.nextLine();
+                        students.get(studentChoice).setName(userInputName());
+                        students.get(studentChoice).setAddress(userInputAddress());
+                        students.get(studentChoice).setGPA(userInputGPA());
+                        System.out.println("Student edited");
+                        break;
+                    } else {
+                        throw new InputMismatchException("Not an integer.");
+                    }
+                } catch (InputMismatchException er){
+                    System.out.println(er.getMessage());
+                    System.out.println("Please try again");
+                    in.next(); //prevents infinite loop
+                } catch (IndexOutOfBoundsException e){
+                    System.out.println("Out of bounds!");
+                    System.out.println("Please try again.");
+                }
+
+            } //end while loop
+
         }
 
-
-    }
     public static void showMenu(){
         System.out.println();
         System.out.println("1.) Print Student List");
@@ -236,8 +264,8 @@ public class Main {
                         case 3: //case for removing a student from the list
                             run.removeStudent();
                             break;
-                        case 4:
-                            //TODO
+                        case 4: //case for editing a student
+                            run.editStudent();
                             break;
                         case 5:
                             //TODO

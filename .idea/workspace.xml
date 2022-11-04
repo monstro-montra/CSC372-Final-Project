@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2623d34c-afe7-45da-bbc9-cc36102231a8" name="Changes" comment="finished exception handling for the remove method.">
+    <list default="true" id="2623d34c-afe7-45da-bbc9-cc36102231a8" name="Changes" comment="removed unecessary if statement in default case for switch in menu method">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
@@ -38,6 +38,20 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="CSC372 Final Project" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -89,7 +103,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667538177891</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="removed unecessary if statement in default case for switch in menu method">
+      <created>1667538291089</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1667538291089</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -110,7 +131,8 @@
     <MESSAGE value="completed addStudent method with all validations. added isStringInt boolean method to be used in userInputAddress, validateString method for userInputName()" />
     <MESSAGE value="minor bug fix. added an extra in.nextLine() in userInputGPA method to prevent scanner overlap" />
     <MESSAGE value="finished exception handling for the remove method." />
-    <option name="LAST_COMMIT_MESSAGE" value="finished exception handling for the remove method." />
+    <MESSAGE value="removed unecessary if statement in default case for switch in menu method" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed unecessary if statement in default case for switch in menu method" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
