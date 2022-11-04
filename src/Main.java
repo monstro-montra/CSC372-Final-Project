@@ -152,6 +152,7 @@ public class Main {
                 if (in.hasNextDouble()){
                     studentGPA = in.nextDouble();
                     if(studentGPA > 0 && studentGPA < 4.0){
+                        in.nextLine(); //use up extra \n
                         break;
                     } else {
                         throw new InvalidAmountException("GPA value is out of bounds. Must be between 0 and 4.");
