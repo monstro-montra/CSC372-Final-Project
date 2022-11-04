@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2623d34c-afe7-45da-bbc9-cc36102231a8" name="Changes" comment="removed unecessary if statement in default case for switch in menu method">
+    <list default="true" id="2623d34c-afe7-45da-bbc9-cc36102231a8" name="Changes" comment="finished removeStudent and editStudent methods with respective exception handling. minor bugfixes. added an isPopulated() method to tell simplify other methods by not having to constantly check if the students.size is not 0.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SplitStringTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +111,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667538291089</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="finished removeStudent and editStudent methods with respective exception handling. minor bugfixes. added an isPopulated() method to tell simplify other methods by not having to constantly check if the students.size is not 0.">
+      <created>1667549976366</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1667549976367</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -132,7 +140,8 @@
     <MESSAGE value="minor bug fix. added an extra in.nextLine() in userInputGPA method to prevent scanner overlap" />
     <MESSAGE value="finished exception handling for the remove method." />
     <MESSAGE value="removed unecessary if statement in default case for switch in menu method" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed unecessary if statement in default case for switch in menu method" />
+    <MESSAGE value="finished removeStudent and editStudent methods with respective exception handling. minor bugfixes. added an isPopulated() method to tell simplify other methods by not having to constantly check if the students.size is not 0." />
+    <option name="LAST_COMMIT_MESSAGE" value="finished removeStudent and editStudent methods with respective exception handling. minor bugfixes. added an isPopulated() method to tell simplify other methods by not having to constantly check if the students.size is not 0." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

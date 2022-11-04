@@ -14,22 +14,22 @@ public class Main {
 
     public boolean isPopulated() {
         try{
-            if (students.size() == 0){
-                throw new InvalidAmountException("There are no students in the list!");
+            if (students.size() == 0){ // if the size of students is 0
+                throw new InvalidAmountException("There are no students in the list!"); //throw InvalidAmountException
             } else {
-                return true;
+                return true; //otherwise, return true
             }
         } catch (InvalidAmountException e) {
-            System.out.println(e.getMessage());
-            return false;
+            System.out.println(e.getMessage()); //get message from InvalidAmountException
+            return false; //method returns false
         }
 
     }
 
-
     public void printStudents(){ //used for case 1 in menu()
-        if (isPopulated()) {
-            for (int i = 0; i < students.size(); i++) {
+        if (isPopulated()) { //call isPopulated method
+            for (int i = 0; i < students.size(); i++) { // keep looping until i = students.size()
+                // print all students in format specified in overridden Student class toString() method
                 System.out.println("Student Number " + (i + 1) + ": " + students.get(i));
             }
         }
@@ -40,10 +40,10 @@ public class Main {
         String studentAddress;
         double studentGPA;
 
-        int numToAdd = howManyStudents();
-
+        int numToAdd = howManyStudents(); //call howManyStudents() method
         in.nextLine(); //will consume the empty \n
         System.out.println("Adding " + numToAdd + " student(s)");
+
         for(int i = 0; i < numToAdd; i++){
             Student student = new Student(); //create a new while loop during each iteration
             System.out.println("Student Number: " + (i+1)); // (i+1) because lists start at index 0. readability
@@ -63,22 +63,27 @@ public class Main {
     }
 
     public static int howManyStudents(){ //will be used in addStudent()
-        int numToAdd;
+        int numToAdd; //variable used for user input
         System.out.println("How many students would you like to add?");
-        while(true){
+        while(true){ //start while loop
             try {
                 System.out.print ("Number of students: ");
-                numToAdd = in.nextInt();
+                numToAdd = in.nextInt(); //set the number of students to add = to userInput
+                if (numToAdd < 1  ) { //if the numToAdd is negative or 0
+                    throw new InvalidAmountException("Invalid amount."); //throw InvalidAmountException
+                }
                 return numToAdd;
-            } catch (InputMismatchException er){
+            } catch (InputMismatchException er){ //catch InputMismatchException
                 System.out.println("Not an integer. Please try again");
                 in.next();
+            } catch (InvalidAmountException e) {
+                System.out.println(e.getMessage());
             }
 
         }
     }
 
-    public static String userInputName(){ //will be used in addStudent()
+    public static String userInputName(){ //will be used in addStudent() and editStudent()
         //name user input
         String studentName; //user input will be held in this variable
         while(true) { //start a while loop
@@ -86,11 +91,11 @@ public class Main {
                 System.out.print("Name: ");
                 studentName = in.nextLine();
                 String[] subArray = studentName.split(" "); //split the studentName subArray by " " (white space)
-                for (String s : subArray) {
-                    if (validateString(s)) {
-                        return studentName;
+                for (String s : subArray) { //for each
+                    if (validateString(s)) { //run validateString on every name the user uses
+                        return studentName; //return the studentName
                     } else {
-                        throw new InputMismatchException("Incorrect Input. Must contain letters only.");
+                        throw new InputMismatchException("Incorrect Input. Must contain letters only."); //throw InputMismatchException
                     }
                 }
             } catch (InputMismatchException er) { //catch InputMismatchException
@@ -103,17 +108,17 @@ public class Main {
 
     public static boolean validateString(String string){ //will be used in the userInputName() method
         try{
-            if(string.matches("[A-Za-z]*")){
-                return true;
-            } else {
-                throw new InputMismatchException();
+            if(string.matches("[A-Za-z]*")){ //if the string is alphabetical
+                return true; //return true
+            } else { //otherwise
+                throw new InputMismatchException(); //throw InputMismatchException
             }
         } catch (InputMismatchException er){
-            return false;
+            return false; //return false
         }
     }
 
-    public static String userInputAddress(){ //will be used in addStudent()
+    public static String userInputAddress(){ //will be used in addStudent() and editStudent()
         //address user input
         String studentAddress; //user input will be held in this variable
         while (true) { //start while loop
@@ -149,18 +154,18 @@ public class Main {
         }
     }
 
-    public static double userInputGPA(){ //will be used in addStudent()
+    public static double userInputGPA(){ //will be used in addStudent() and editStudent()
         //GPA user input
         double studentGPA; //user input will be held in this variable
         while(true) { //start while loop
             try{ //start try-catch
                 System.out.print("GPA: ");
                 if (in.hasNextDouble()){
-                    studentGPA = in.nextDouble();
-                    if(studentGPA > 0 && studentGPA <= 4.0){
+                    studentGPA = in.nextDouble(); //set studentInput to next double value
+                    if(studentGPA > 0 && studentGPA <= 4.0){ // if student GPA > 0 and <= 4.0
                         in.nextLine(); //use up extra \n
-                        break;
-                    } else {
+                        break; //break from loop
+                    } else { //otherwise throw exception
                         throw new InvalidAmountException("GPA value is out of bounds. Must be between 0 and 4.");
                     }
 
@@ -207,16 +212,16 @@ public class Main {
 
     public void editStudent(){
         int studentChoice;
-            while(isPopulated()){
-                printStudents();
+            while(isPopulated()){ //check if isPopulated returns true
+                printStudents(); //run printStudents
                 try{
                     System.out.println("Which student would you like to edit?");
-                    if (in.hasNextInt()){
-                        studentChoice = in.nextInt() - 1;
-                        in.nextLine();
-                        students.get(studentChoice).setName(userInputName());
-                        students.get(studentChoice).setAddress(userInputAddress());
-                        students.get(studentChoice).setGPA(userInputGPA());
+                    if (in.hasNextInt()){ //if next input is Int
+                        studentChoice = in.nextInt() - 1; // - 1 to keep up with consistency of user readability
+                        in.nextLine(); //skips extra \n
+                        students.get(studentChoice).setName(userInputName()); //get the position of studentChoice in students, then setName
+                        students.get(studentChoice).setAddress(userInputAddress());//get the position of studentChoice in students, then setAddress
+                        students.get(studentChoice).setGPA(userInputGPA());//get the position of studentChoice in students, then setGPA
                         System.out.println("Student edited");
                         break;
                     } else {
@@ -267,16 +272,16 @@ public class Main {
                         case 4: //case for editing a student
                             run.editStudent();
                             break;
-                        case 5:
+                        case 5: //case for sorting by name
                             //TODO
                             break;
-                        case 6:
+                        case 6: //case for sorting by address
                             //TODO
                             break;
-                        case 7:
+                        case 7: //case for sorting by GPA
                             //TODO
                             break;
-                        case 8:
+                        case 8: //case for exiting program
                             System.exit(0);
                         default:
                             throw new InvalidMenuOptionException("Invalid menu Option");
@@ -295,7 +300,6 @@ public class Main {
                 System.out.println(menuOptionEr.getMessage());
                 System.out.println("Please try again.");
             }
-        } while (menuChoice != 8);
-
+        } while (menuChoice != 8); //as long as the menuChoice isn't 8 or program is closed, continue looping.
     }
 }
