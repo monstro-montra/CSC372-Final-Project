@@ -1,9 +1,6 @@
 //import statements
-import java.util.InputMismatchException;
-import java.util.LinkedList;
-import java.util.Scanner;
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
+
+import java.util.*;
 
 public class Main {
     //class fields
@@ -24,7 +21,6 @@ public class Main {
             else{
                 for (int i = 0; i < students.size(); i++){
                     System.out.println("Student Number " + (i + 1) + ": " + students.get(i));
-                    System.out.println();
                 }
             }
         } catch (InvalidAmountException invalidAmountException){
@@ -33,29 +29,46 @@ public class Main {
     }
 
     public void addStudent(){ //used for case 2 in menu()
-        System.out.println("How many students would you like to add?");
-        int numToAdd;
         String studentName;
         String studentAddress;
         double studentGPA;
-        numToAdd = in.nextInt();
+
+        int numToAdd = howManyStudents();
+
+        in.nextLine(); //will consume the empty \n
         System.out.println("Adding " + numToAdd + " student(s)");
         for(int i = 0; i < numToAdd; i++){
             Student student = new Student(); //create a new while loop during each iteration
             System.out.println("Student Number: " + (i+1)); // (i+1) because lists start at index 0. readability
 
             studentName = userInputName(); //call userInputName() method
-            student.setName(studentName);
+            student.setName(studentName); //set the name of the student object to user input
 
             studentAddress = userInputAddress(); //call userInputAddress() method
-            student.setAddress(studentAddress);
+            student.setAddress(studentAddress); //set the address of the student object to user input
 
             studentGPA = userInputGPA(); //call userInputGPA() method
-            student.setGPA(studentGPA);
+            student.setGPA(studentGPA); //set the GPA of the student object to user input
 
-            students.add(student);
+            students.add(student); //add student object to the students linked list
         }
 
+    }
+
+    public static int howManyStudents(){ //will be used in addStudent()
+        int numToAdd;
+        System.out.println("How many students would you like to add?");
+        while(true){
+            try {
+                System.out.print ("Number of students: ");
+                numToAdd = in.nextInt();
+                return numToAdd;
+            } catch (InputMismatchException er){
+                System.out.println("Not an integer. Please try again");
+                in.next();
+            }
+
+        }
     }
 
     public static String userInputName(){ //will be used in addStudent()
@@ -64,20 +77,33 @@ public class Main {
         while(true) { //start a while loop
             try {
                 System.out.print("Name: ");
-                if (in.hasNext("[A-Za-z]*")) { //if in next input is alphabetical
-                    studentName = in.next(); //setName of student object to user input token (without any white spaces)
-                    in.nextLine(); // necessary to populate the next line. readability purposes
-                    break; // break out of the while loop
-                } else { //otherwise
-                    throw new InputMismatchException("Input must contain letters only."); //throw an InputMismatchException
+                studentName = in.nextLine();
+                String[] subArray = studentName.split(" "); //split the studentName subArray by " " (white space)
+                for (String s : subArray) {
+                    if (validateString(s)) {
+                        return studentName;
+                    } else {
+                        throw new InputMismatchException("Incorrect Input. Must contain letters only.");
+                    }
                 }
             } catch (InputMismatchException er) { //catch InputMismatchException
                 System.out.println(er.getMessage()); //get message of InputMismatchException
                 System.out.println("Please try again"); //prompt user to try again
-                in.next(); //will prevent an infinite loop
+                in.skip("");
             } //end catch
         } //end loop
-        return studentName;
+    }
+
+    public static boolean validateString(String string){ //will be used in the userInputName() method
+        try{
+            if(string.matches("[A-Za-z]*")){
+                return true;
+            } else {
+                throw new InputMismatchException();
+            }
+        } catch (InputMismatchException er){
+            return false;
+        }
     }
 
     public static String userInputAddress(){ //will be used in addStudent()
@@ -86,24 +112,36 @@ public class Main {
         while (true) { //start while loop
             try{
                 System.out.print("Address: ");
-                studentAddress = in.nextLine();
-                if (studentAddress.matches("[A-Za-z]*")){ // if next input is alphabetical and has numbers
-                    break; //break out of loop
-                } else if (studentAddress.matches("[A-Za-z]*" + "[123456789]")){ // or if next input is just alphabetical
-                    break; //break out of loop
-                } else if(studentAddress.matches("[123456789]" +"[A-Za-z]*" +  ".")){ // or if next input is alphabetical, has ints, and a period
-                    break; //break out of loop
+                studentAddress = in.nextLine(); //format for address should be similar to this: 504 Windmill St.
+                String[] subArray = studentAddress.split(" "); //split the address by " " (whitespace) into an array
+                if (isStringInt(subArray[0]) && subArray[1].matches("[A-Za-z]*") && subArray[2].contains(".")){
+                    break;
+                } else if (isStringInt(subArray[0]) && subArray[1].matches("[A-Za-z]*") && subArray[2].matches("[A-Za-z]*")){
+                    break;
                 } else {
-                    throw new InputMismatchException("Incorrect input. Must be an address."); //throw InputMismatchException
+                    throw new InvalidAddressFormatException("Invalid Address format. ");
                 }
-            } catch (InputMismatchException er){ //catch InputMismatchException
-                System.out.println(er.getMessage()); //get message of InputMismatchException
-                System.out.println("Please try again.");
+            } catch (InvalidAddressFormatException er){ //catch InvalidAddressFormatException
+                System.out.println(er.getMessage()); //get message of InvalidAddressFormatException
+                System.out.println("Please format similar to the following example: 201 Bloomingdale Rd.");
                 in.skip(""); //necessary to prevent infinite loop
-            } //end catch
+            } catch (IndexOutOfBoundsException er) {
+                System.out.println("Address not provided. Please format similar to the following example: 201 Bloomingdale Rd.");
+                in.skip("");
+            }//end catch
         } //end while loop
         return studentAddress;
     }
+
+    public static boolean isStringInt(String string){ // this will check if a string is an integer. To use in userInputAddress method
+        try{
+            Integer.parseInt(string);
+            return true;
+        } catch (NumberFormatException er){
+            return false;
+        }
+    }
+
 
     public static double userInputGPA(){ //will be used in addStudent()
         //GPA user input
