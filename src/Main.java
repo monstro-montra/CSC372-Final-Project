@@ -5,11 +5,15 @@ import java.util.*;
 public class Main {
     //class fields
     LinkedList<Student> students = new LinkedList<>();
+    StudentNameCompare nameCompare = new StudentNameCompare();
+    StudentAddressCompare addressCompare = new StudentAddressCompare();
+    StudentGPACompare gpaCompare = new StudentGPACompare();
     static Scanner in = new Scanner(System.in); //one scanner object for all necessary methods
 
     //main method where program starts
     public static void main(String[] args) {
-        menu(0);
+        Main run = new Main(); //This will allow us to run non-static methods and call class level fields
+        run.menu(0);
     }
 
     public boolean isPopulated() {
@@ -188,12 +192,14 @@ public class Main {
     public void removeStudent()  { //used for case 3 in menu()
             while(isPopulated()){ //start loop while students is Populated
                 printStudents();
-                try{
-                    System.out.println("Which student would you like to remove?");
-                    if (in.hasNextInt()){
+                try {
+                    System.out.println("Which student would you like to remove? You may cancel with the letter 'C' or 'c'.");
+                    if (in.hasNextInt()) {
                         students.remove(in.nextInt() - 1);
                         System.out.println("Student removed.");
                         break;
+                    } else if(isCancel()){ //if the user wrote "C" or "c"
+                        return; //leave from method
                     } else {
                         throw new InputMismatchException("Not an integer.");
                     }
@@ -207,16 +213,17 @@ public class Main {
                 }
 
             } //end while loop
-
     }
 
     public void editStudent(){
         int studentChoice;
+
             while(isPopulated()){ //check if isPopulated returns true
                 printStudents(); //run printStudents
-                try{
-                    System.out.println("Which student would you like to edit?");
-                    if (in.hasNextInt()){ //if next input is Int
+                try {
+                    System.out.println("Which student would you like to edit? You may cancel with the letter 'C' or 'c'.");
+
+                    if (in.hasNextInt()) { //if next input is Int
                         studentChoice = in.nextInt() - 1; // - 1 to keep up with consistency of user readability
                         in.nextLine(); //skips extra \n
                         students.get(studentChoice).setName(userInputName()); //get the position of studentChoice in students, then setName
@@ -224,7 +231,9 @@ public class Main {
                         students.get(studentChoice).setGPA(userInputGPA());//get the position of studentChoice in students, then setGPA
                         System.out.println("Student edited");
                         break;
-                    } else {
+                    } else if (isCancel()){
+                        return;
+                    }else {
                         throw new InputMismatchException("Not an integer.");
                     }
                 } catch (InputMismatchException er){
@@ -240,6 +249,35 @@ public class Main {
 
         }
 
+    public void sort(LinkedList<Student> list, Comparator<Student> comparator){ //custom sort method to sort by name, address, or GPA
+        //selection sort algorithm
+        for (int i = 0; i < list.size() - 1; i ++){
+            int minIndex = i; // minIndex == to current iteration of loop
+            for (int j = i + 1; j < students.size(); j++){
+                if(comparator.compare(students.get(j), students.get(minIndex)) < 0){ //check if element in question (j) is smaller than current minimum
+                    minIndex = j; // update minIndex to be value in question
+                }
+            }
+            swap(list, i, minIndex);
+        }
+    }
+
+    public void swap(LinkedList<Student> list, int i1, int i2){
+        Student temp = list.get(i1); //temp = list i1
+        list.set(i1, list.get(i2)); //set i1 to i2
+        list.set(i2, temp);
+    }
+
+    public static boolean isCancel(){ //this method allows user to cancel out of edit and remove method
+        if (in.hasNext("C") || in.hasNext("c")){ //if user input is "C" or "c"
+            System.out.println("Cancelling. Returning to main menu.");
+            in.next();
+            return true;
+        }
+        return false;
+    }
+
+
     public static void showMenu(){
         System.out.println();
         System.out.println("1.) Print Student List");
@@ -252,39 +290,36 @@ public class Main {
         System.out.println("8.) Exit");
     }
 
-    public static void menu(int menuChoice){
-        Main run = new Main(); //This will allow us to run non-static methods and call class level fields
+    public void menu(int menuChoice){
         do{
             showMenu(); //call showMenu method
             try{
                 if (in.hasNextInt()){
                     menuChoice = in.nextInt(); //set menuChoice = to the next user input int
-                    switch(menuChoice){
-                        case 1: // case for printing out the list of students
-                            run.printStudents();
-                            break;
-                        case 2: //case for adding a student to the list
-                            run.addStudent();
-                            break;
-                        case 3: //case for removing a student from the list
-                            run.removeStudent();
-                            break;
-                        case 4: //case for editing a student
-                            run.editStudent();
-                            break;
-                        case 5: //case for sorting by name
-                            //TODO
-                            break;
-                        case 6: //case for sorting by address
-                            //TODO
-                            break;
-                        case 7: //case for sorting by GPA
-                            //TODO
-                            break;
-                        case 8: //case for exiting program
-                            System.exit(0);
-                        default:
-                            throw new InvalidMenuOptionException("Invalid menu Option");
+                    switch (menuChoice) { //enhanced switch removes need for break statements.
+                        case 1 -> // case for printing out the list of students
+                                printStudents();
+                        case 2 -> //case for adding a student to the list
+                                addStudent();
+                        case 3 -> //case for removing a student from the list
+                                removeStudent();
+                        case 4 -> //case for editing a student
+                                editStudent();
+                        case 5 -> { //case for sorting by name
+                            sort(students, nameCompare);
+                            System.out.println("Sorted by Name!");
+                        }
+                        case 6 -> { //case for sorting by address
+                            sort(students, addressCompare);
+                            System.out.println("Sorted by address!");
+                        }
+                        case 7 -> { //case for sorting by GPA
+                            sort(students, gpaCompare);
+                            System.out.println("Sorted by GPA!");
+                        }
+                        case 8 ->  //case for exiting program
+                                System.exit(0);
+                        default -> throw new InvalidMenuOptionException("Invalid menu Option");
                     }
 
                 } else {
