@@ -1,5 +1,6 @@
 //import statements
 
+import java.io.*;
 import java.util.*;
 
 public class Main {
@@ -277,6 +278,27 @@ public class Main {
         return false;
     }
 
+    public void printToFile() throws IOException {
+        if(!isPopulated()){
+            return;
+        }
+        try{
+            FileWriter stream = new FileWriter("output.txt");
+            BufferedWriter output = new BufferedWriter(stream);
+
+            for (Student student : students) {
+                output.write(student + "");
+                output.newLine();
+            }
+
+            output.close();
+            System.out.println("File created.");
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     public static void showMenu(){
         System.out.println();
@@ -287,7 +309,8 @@ public class Main {
         System.out.println("5.) Sort by Name");
         System.out.println("6.) Sort by Address");
         System.out.println("7.) Sort by GPA");
-        System.out.println("8.) Exit");
+        System.out.println("8.) Print to File");
+        System.out.println("9.) Exit");
     }
 
     public void menu(int menuChoice){
@@ -317,7 +340,9 @@ public class Main {
                             sort(students, gpaCompare);
                             System.out.println("Sorted by GPA!");
                         }
-                        case 8 ->  //case for exiting program
+                        case 8 ->
+                            printToFile();
+                        case 9 ->  //case for exiting program
                                 System.exit(0);
                         default -> throw new InvalidMenuOptionException("Invalid menu Option");
                     }
@@ -334,7 +359,9 @@ public class Main {
             } catch (InvalidMenuOptionException menuOptionEr){
                 System.out.println(menuOptionEr.getMessage());
                 System.out.println("Please try again.");
+            } catch (IOException e) {
+                System.out.println("Error, please try again");
             }
-        } while (menuChoice != 8); //as long as the menuChoice isn't 8 or program is closed, continue looping.
+        } while (menuChoice != 9); //as long as the menuChoice isn't 8 or program is closed, continue looping.
     }
 }

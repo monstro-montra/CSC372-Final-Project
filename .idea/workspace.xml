@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2623d34c-afe7-45da-bbc9-cc36102231a8" name="Changes" comment="added more comments. TODO: sortation algorithm.">
-      <change afterPath="$PROJECT_DIR$/src/StudentCompare.java" afterDir="false" />
+    <list default="true" id="2623d34c-afe7-45da-bbc9-cc36102231a8" name="Changes" comment="granted user the ability to cancel from removeStudent and editStudent methods.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StudentCompare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentCompare.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +26,10 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2H1MYBaSatjHg2S2DX7ZVsUSKdh" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -125,7 +129,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667551257609</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="granted user the ability to cancel from removeStudent and editStudent methods.">
+      <created>1667632286869</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1667632286869</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -149,7 +160,8 @@
     <MESSAGE value="removed unecessary if statement in default case for switch in menu method" />
     <MESSAGE value="finished removeStudent and editStudent methods with respective exception handling. minor bugfixes. added an isPopulated() method to tell simplify other methods by not having to constantly check if the students.size is not 0." />
     <MESSAGE value="added more comments. TODO: sortation algorithm." />
-    <option name="LAST_COMMIT_MESSAGE" value="added more comments. TODO: sortation algorithm." />
+    <MESSAGE value="granted user the ability to cancel from removeStudent and editStudent methods." />
+    <option name="LAST_COMMIT_MESSAGE" value="granted user the ability to cancel from removeStudent and editStudent methods." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
