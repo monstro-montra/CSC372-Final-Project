@@ -1,0 +1,5 @@
+Name: Alex, Address: 504 West St., GPA: 3.9
+Name: Bruno, Address: 107 Broadway Blvd., GPA: 4.0
+Name: Jason, Address: 404 Error St., GPA: 3.7
+Name: Lorenzo, Address: 334 Blue Skies Rd., GPA: 2.9
+Name: Ronaldo, Address: 270 Montana Rd., GPA: 2.2

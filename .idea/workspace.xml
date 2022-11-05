@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2623d34c-afe7-45da-bbc9-cc36102231a8" name="Changes" comment="granted user the ability to cancel from removeStudent and editStudent methods.">
+    <list default="true" id="2623d34c-afe7-45da-bbc9-cc36102231a8" name="Changes" comment="added the last method, writing list to file. program complete">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/StudentCompare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentCompare.java" afterDir="false" />
@@ -136,7 +136,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667632286869</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="added the last method, writing list to file. program complete">
+      <created>1667635030144</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1667635030144</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -161,7 +168,8 @@
     <MESSAGE value="finished removeStudent and editStudent methods with respective exception handling. minor bugfixes. added an isPopulated() method to tell simplify other methods by not having to constantly check if the students.size is not 0." />
     <MESSAGE value="added more comments. TODO: sortation algorithm." />
     <MESSAGE value="granted user the ability to cancel from removeStudent and editStudent methods." />
-    <option name="LAST_COMMIT_MESSAGE" value="granted user the ability to cancel from removeStudent and editStudent methods." />
+    <MESSAGE value="added the last method, writing list to file. program complete" />
+    <option name="LAST_COMMIT_MESSAGE" value="added the last method, writing list to file. program complete" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
